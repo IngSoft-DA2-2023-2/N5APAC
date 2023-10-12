@@ -20,14 +20,21 @@ public class StudentLogic : IStudentLogic
         return _studentsRepository.GetStudentById(id);
     }
 
-    public IEnumerable<Student> GetStudents()
+    public IEnumerable<Student> GetStudents(int? edad)
     {
-        return _studentsRepository.GetStudents();
+        return _studentsRepository.GetStudents(edad);
     }
 
     public void InsertStudents(Student? student)
     {
-        _studentsRepository.InsertStudents(student);
+        if (student == null)
+        {
+            throw new NullReferenceException("El usuario no puede ser nulo.");
+        }
+        else
+        {
+            _studentsRepository.InsertStudents(student);
+        }
     }
 }
 

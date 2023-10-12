@@ -14,9 +14,9 @@ public class StudentsRepository<T> : IStudentsRepository<Student> where T : clas
         return students.Find(u => u.Id == id);
     }
 
-    public IEnumerable<Student> GetStudents()
+    public IEnumerable<Student> GetStudents(int? edad)
     {
-        return students;
+        return students.Where(s => s.Age == edad);
     }
 
     public void InsertStudents(Student? student)
